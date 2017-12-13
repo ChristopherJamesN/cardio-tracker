@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>CardioTracker</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
@@ -9,13 +11,47 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+
   <body>
+    <div class="container">
+      <% if user_signed_in? %>
+      <nav class="navbar sticky-top navbar-expand-sm navbar-light bg-light">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" href="/users/show"> Your Account </a>
+            <a class="nav-item nav-link" href="/workouts/today"> Today's Workouts </a>
+            <a class="nav-item nav-link" href="/workouts/week"> This Week's Workouts </a>
+            <a class="nav-item nav-link" href="/workouts"> All Workouts </a>
+            <a class="nav-item nav-link" href="/workouts/new"> Create Workout </a>
+            <p class="nav-item nav-link"><%= link_to("Sign Out", destroy_user_session_path, :method => 'delete', class: "btn btn-primary", role: "button") %><p>
+          </div>
+        </div>
+      </nav>
+
+        <% else %>
+        <nav class="navbar sticky-top navbar-expand-sm navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <p class="nav-item nav-link"><%= link_to("Sign Up", new_user_registration_path, class: "btn btn-primary", role: "button") %></p>
+              <p class="nav-item nav-link"><%= link_to('Login', new_user_session_path, class: "btn btn-primary", role: "button")  %></p>
+            </div>
+          </div>
+        </nav>
+      <%end %>
+      <br>
     <%= content_tag(:div, flash[:error], :id => "flash_error", class: "alert alert-danger alert-dismissable", data: { dismiss: 'alert' }) if flash[:error] %>
     <%= content_tag(:div, flash[:notice], :id => "flash_notice", class: "alert alert-success alert-dismissable", data: { dismiss: 'alert' }) if flash[:notice] %>
     <%= content_tag(:div, flash[:alert], :id => "flash_alert", class: "alert alert-danger alert-dismissable", data: { dismiss: 'alert' }) if flash[:alert] %>
     <%= yield %>
+    </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
   </body>
 </html>

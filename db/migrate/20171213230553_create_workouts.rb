@@ -1,7 +1,7 @@
 class CreateWorkouts < ActiveRecord::Migration[5.1]
   def change
     create_table :workouts do |t|
-      t.string :type
+      t.string :type_workout
       t.integer :duration
       t.integer :calories
       t.integer :user_id

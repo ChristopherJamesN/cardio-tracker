@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  get '/users/show', to: 'users#show'
   get '/workouts/today', to: 'workouts#today'
   get '/workouts/week', to: 'workouts#week'
   resources :workouts

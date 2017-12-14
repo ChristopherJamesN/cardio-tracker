@@ -36,6 +36,7 @@ class WorkoutsController < ApplicationController
   # POST /workouts.json
   def create
     @workout = Workout.new(workout_params)
+    current_user.workouts << @workout
 
     respond_to do |format|
       if @workout.save

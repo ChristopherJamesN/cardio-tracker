@@ -11,27 +11,20 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :type %>
-    <%= form.text_field :type, id: :workout_type %>
+  <div class="form-group">
+    <%= form.text_field :type, id: :workout_type, class: "form-control", placeholder: "Type" %>
   </div>
 
-  <div class="field">
-    <%= form.label :duration %>
-    <%= form.number_field :duration, id: :workout_duration %>
+  <div class="form-group">
+    <%= form.number_field :duration, id: :workout_duration, class: "form-control", placeholder: "Duration" %>
   </div>
 
-  <div class="field">
-    <%= form.label :calories %>
-    <%= form.number_field :calories, id: :workout_calories %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id, id: :workout_user_id %>
+  <div class="form-group">
+    <%= form.number_field :calories, id: :workout_calories, class: "form-control", placeholder: "Calories Burned" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <button type="submit" class="btn btn-primary">Submit</button>
   </div>
+  <br>
 <% end %>

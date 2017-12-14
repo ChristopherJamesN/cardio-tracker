@@ -8,6 +8,16 @@ class WorkoutsController < ApplicationController
     @workouts = Workout.all
   end
 
+  def today
+    @workouts = Workout.where(user_id: current_user.id).todays_workouts
+    render :index
+  end
+
+  def week
+    @workouts = Workout.where(user_id: current_user.id).this_weeks_workouts
+    render :index
+  end
+
   # GET /workouts/1
   # GET /workouts/1.json
   def show

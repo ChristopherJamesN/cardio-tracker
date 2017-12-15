@@ -12,4 +12,12 @@ class Workout < ApplicationRecord
     end
     calories
   end
+
+  def self.total_duration
+    duration = 0
+    Workout.all.each do |workout|
+      duration+= workout.duration
+    end
+    duration
+  end
 end

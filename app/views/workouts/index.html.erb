@@ -18,7 +18,7 @@
         <td><%= workout.calories %></td>
         <td><%= link_to 'Show', workout, class: "btn btn-primary", role: "button" %></td>
         <td><%= link_to 'Edit', edit_workout_path(workout), class: "btn btn-primary", role: "button" %></td>
-        <td><%= link_to 'Destroy', workout, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary", role: "button" %></td>
+        <td><%= link_to 'Delete', workout, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary", role: "button" %></td>
       </tr>
     <% end %>
     <tr>
